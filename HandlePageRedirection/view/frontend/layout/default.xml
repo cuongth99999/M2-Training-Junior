@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header-wrapper">
+            <block class="Magenest\HandlePageRedirection\Block\Sale\SaleBox" name="magenest_salebox" template="Magenest_HandlePageRedirection::salebox.phtml" before="top.search"/>
+        </referenceContainer>
+    </body>
+</page>
