@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales" title="Sales" translate="title" sortOrder="20">
+                    <resource id="Magenest_CancelOrder::cancel_orders" title="Magenest Cancel Order"
+                              translate="title" sortOrder="10">
+                        <resource id="Magenest_CancelOrder::cancelorder_grid" title="Cancel Order Grid"
+                                  translate="titlet" sortOrder="15"/>
+                    </resource>
+                </resource>
+                <resource id="Magenest_CancelOrder::api_cancel_orders" title="Dev API - Cancel Orders"
+                          translate="title" sortOrder="110">
+                    <resource id="Magenest_CancelOrder::all_order_history_get" title="Get All Order History"
+                              translate="title" sortOrder="10" />
+                    <resource id="Magenest_CancelOrder::request_cancel_order" title="Request Cancel Order"
+                              translate="title" sortOrder="20" />
+                    <resource id="Magenest_CancelOrder::view_order_detail" title="View Order Detail"
+                              translate="title" sortOrder="30" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
