@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="collectshipping_checkout_submit_all_after" instance="Magenest\CollectShipping\Observer\CheckoutSubmitAllAfterObserver"/>
+    </event>
+    <event name="sales_quote_address_collect_totals_after">
+        <observer name="mgn_sales_customer_validate_vat_number" instance="Magenest\CollectShipping\Observer\FreeShipping" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="mgn_collectShipping_sales_model_service_quote_submit_before" instance="Magenest\CollectShipping\Observer\SaveOrderBeforeSalesModelQuoteObserver" />
+    </event>
+</config>

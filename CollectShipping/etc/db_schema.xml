@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"      xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote_address" resource="default" engine="innodb">
+        <column xsi:type="varchar" name="account_number" length="1024" nullable="true" comment="Account Number"/>
+    </table>
+    <table name="sales_order_address" resource="default" engine="innodb">
+        <column xsi:type="varchar" name="account_number" length="1024" nullable="true" comment="Account Number"/>
+    </table>
+</schema>
