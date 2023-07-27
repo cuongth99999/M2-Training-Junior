@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_attachment" resource="default" comment="List of data/schema patches">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="icon" length="1024" nullable="false" comment="Icon" />
+        <column xsi:type="varchar" name="attachment_type" length="1024" nullable="false" comment="Attachment Type" />
+        <column xsi:type="varchar" name="file_path" length="1024" nullable="false" comment="File Path" />
+        <column xsi:type="varchar" name="file_link" length="1024" nullable="true" comment="File Link" />
+        <column xsi:type="varchar" name="customer_group" comment="Customer Group"/>
+        <column xsi:type="varchar" name="file_name" length="254" nullable="false" comment="File Name" />
+        <column xsi:type="varchar" name="file_label" length="254" nullable="false" comment="File Label" />
+        <column xsi:type="varchar" name="mine_type" length="1024" nullable="false" comment="Mine Type" />
+        <column xsi:type="varchar" name="file_size" length="1024" nullable="false" comment="File Size" />
+        <column xsi:type="boolean" name="is_visible" comment="Visible" nullable="false" default="1"/>
+        <column xsi:type="boolean" name="include_in_order" comment="Visible" nullable="false" default="1"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created Time"/>
+        <column xsi:type="timestamp" name="update_at" nullable="true"  default="CURRENT_TIMESTAMP" on_update="true" comment="Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+        <constraint xsi:type="unique" referenceId="ATTACHMENT_FILENAME_FILELABEL">
+            <column name="file_name"/>
+            <column name="file_label"/>
+        </constraint>
+    </table>
+</schema>

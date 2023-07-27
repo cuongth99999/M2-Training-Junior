@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer.wishlist.items">
+            <block class="Magenest\CourseType\Block\Customer\Wishlist\Item\Column\CourseLabel" name="customer.wishlist.item.course_label" template="Magenest_CourseType::item/column/course_label.phtml" cacheable="false" after="customer.wishlist.item.name"/>
+        </referenceBlock>
+    </body>
+</page>

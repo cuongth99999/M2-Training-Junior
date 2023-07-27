@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="  urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters">
+            <filterSelect name="category_id" provider="${ $.parentName }" component="Magento_Ui/js/form/element/ui-select" template="ui/grid/filters/elements/ui-select">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="filterOptions" xsi:type="boolean">true</item>
+                        <item name="levelsVisibility" xsi:type="number">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <options class="Magenest\CourseType\Model\Category\Categorylist"/>
+                    <caption translate="true">– Please Select a Category –</caption>
+                    <label translate="true">Categories</label>
+                    <dataScope>category_id</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+    </listingToolbar>
+    <columns name="product_columns">
+<!--        <column name="category_id" class="Magenest\CourseType\Ui\Component\Listing\Column\Category">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="options" xsi:type="object">Magenest\CourseType\Model\Category\Categorylist</item>-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="filter" xsi:type="string">select</item>-->
+<!--                    <item name="add_field" xsi:type="boolean">true</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Categories</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">75</item>-->
+<!--                    <item name="dataType" xsi:type="string">select</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </column>-->
+        <column name="category_id" class="Magenest\CourseType\Ui\Component\Listing\Column\Category">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Categories</item>
+                    <item name="sortOrder" xsi:type="number">110</item>
+                </item>
+            </argument>
+        </column>
+        <column name="document" class="Magenest\CourseType\Ui\Component\Listing\Column\Documents">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Documents</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

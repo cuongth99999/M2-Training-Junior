@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var $block \Magenest\CourseType\Block\Product\View
+ */
+$product = $block->getProduct();
+if(!empty($product->getCourseTimeline())):
+    $courseTimelines = json_decode($product->getCourseTimeline());
+    $courseTimelines = $courseTimelines->course_timeline;
+    ?>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Slot</th>
+        </tr>
+        <?php foreach ($courseTimelines as $courseTimeline): ?>
+            <tr>
+                <td style="color: #1979c3">
+                    <?= $courseTimeline->from . ' - '. $courseTimeline->to ?>
+                </td>
+                <td>
+                    <?= $courseTimeline->quantity ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?>

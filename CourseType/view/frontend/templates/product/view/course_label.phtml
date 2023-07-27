@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var $block \Magenest\CourseType\Block\Product\View
+ */
+$product = $block->getProduct();
+$doc = $block->getCourseDocument($product->getData('document'));
+?>
+<?php if($product->getTypeId() === 'course_type'):?>
+    <div>
+        <a style="display: flex" target="_blank" href="https://training.junior.com/media/attachment/tmp/file/<?= $doc->getFileLabel() ?>.pdf">
+            <img src="<?= $doc->getIcon() ?>" style="height: 20px; width: 20px;">
+            <span style="margin-left: 5px"><?= $doc->getFileLabel() ?></span>
+        </a>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_CourseType::coursetype" title="Course Type" module="Magenest_CourseType" sortOrder="51" resource="Magenest_CourseType::coursetype"/>
+        <add id="Magenest_CourseType::coursetype_grid" title="Manage Attachments Course" module="Magenest_CourseType" sortOrder="10" action="course/attachment/index" resource="Magenest_CourseType::attachment" parent="Magenest_CourseType::coursetype"/>
+    </menu>
+</config>
