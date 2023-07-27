@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magenest\CourseType\Block\Customer\Wishlist\Item\Column\CourseLabel $block */
+
+/** @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+
+if($product->getTypeId() === 'course_type'):
+    $doc = $block->getCourseDocument($product->getDocument());
+    ?>
+    <div style="display: flex">
+        <img style="width: 20px; height: 20px" src="<?= $doc->getIcon() ?>">
+        <span><?= $doc->getFileLabel() ?></span>
+    </div>
+<?php endif; ?>

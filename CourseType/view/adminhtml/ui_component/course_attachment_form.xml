@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">course_attachment_form.course_attachment_form_data_source</item>
+            <item name="deps" xsi:type="string">course_attachment_form.course_attachment_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">From</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">course_attachment_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Magenest\CourseType\Block\Adminhtml\Attachment\Edit\Button\SaveButton"/>
+            <button name="save_and_continue" class="Magenest\CourseType\Block\Adminhtml\Attachment\Edit\Button\SaveAndContinueButton"/>
+            <button name="delete" class="Magenest\CourseType\Block\Adminhtml\Attachment\Edit\Button\DeleteButton"/>
+            <button name="back" class="Magenest\CourseType\Block\Adminhtml\Attachment\Edit\Button\BackButton"/>
+        </buttons>
+        <namespace>course_attachment_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>course_attachment_form.course_attachment_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="course_attachment_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="course/attachment/save"/>
+        </settings>
+        <dataProvider class="Magenest\CourseType\Model\Block\Attachment\DataProvider" name="course_attachment_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">File Info</label>
+        </settings>
+        <field name="entity_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">course_attachment</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>entity_id</dataScope>
+            </settings>
+        </field>
+        <field name="attachment_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">file</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Attachment Type</label>
+                <visible>true</visible>
+                <dataScope>attachment_type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="file" xsi:type="array">
+                                <item name="value" xsi:type="string">file</item>
+                                <item name="label" xsi:type="string" translate="true">File</item>
+                            </option>
+                            <option name="image" xsi:type="array">
+                                <item name="value" xsi:type="string">image</item>
+                                <item name="label" xsi:type="string" translate="true">Image</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="file_path" formElement="fileUploader" component="Magenest_CourseType/js/document/file-uploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">course_attachment</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">File</label>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">course/attachment/upload</param>
+                        </uploaderConfig>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
+        <field name="file_name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">course_attachment</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Attachment Name</label>
+                <visible>true</visible>
+                <dataScope>file_name</dataScope>
+            </settings>
+        </field>
+        <field name="file_label" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">course_attachment</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Label</label>
+                <visible>true</visible>
+                <dataScope>file_label</dataScope>
+            </settings>
+        </field>
+        <field name="customer_group" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">course_attachment</item>
+                    <item name="notice" xsi:type="string" translate="true">Don't choose any or select all to show the attachment to all customer group</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Customer Groups</label>
+                <dataScope>customer_group</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="is_visible">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" xsi:type="string" translate="true">Is Visible</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">course_attachment</item>
+                    <item name="dataScope" xsi:type="string">is_visible</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="include_in_order">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" xsi:type="string" translate="true">Include In Order</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">course_attachment</item>
+                    <item name="dataScope" xsi:type="string">include_in_order</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="notice" xsi:type="string" translate="true">Include the attachment into order transactional email and show in the order order section of customer account</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

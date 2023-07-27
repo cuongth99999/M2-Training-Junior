@@ -1,0 +1,44 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magenest\CourseType\Model\FileUploader">
+        <arguments>
+            <!-- Temporary file stored in pub/media/faq/tmp/icon -->
+            <argument name="baseTmpPath" xsi:type="string">attachment/tmp/file</argument>
+            <argument name="basePath" xsi:type="string">attachment/file</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+                <item name="pdf" xsi:type="string">pdf</item>
+                <item name="txt" xsi:type="string">txt</item>
+                <item name="doc" xsi:type="string">doc</item>
+                <item name="docx" xsi:type="string">docx</item>
+                <item name="zip" xsi:type="string">zip</item>
+                <item name="rar" xsi:type="string">rar</item>
+                <item name="csv" xsi:type="string">csv</item>
+                <item name="xlsx" xsi:type="string">xlsx</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="course_attachment_listing_data_source" xsi:type="string">Magenest\CourseType\Model\ResourceModel\Attachment\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\CourseType\Model\ResourceModel\Attachment\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_attachment</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\CourseType\Model\ResourceModel\Attachment</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="attachment" xsi:type="string">Magenest_CourseType</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider" type="Magenest\CourseType\Ui\DataProvider\Product\ProductDataProvider" />
+</config>
