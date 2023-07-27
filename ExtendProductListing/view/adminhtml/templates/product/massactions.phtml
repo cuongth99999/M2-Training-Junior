@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var $block \Magenest\ExtendProductListing\Block\Adminhtml\Product\MassActions
+ */
+?>
+<div id="related-products" style="display: none">
+    <fieldset class="admin__fieldset">
+        <div class="admin__field">
+            <label class="admin__field-label">
+                <span><?= __('Add Related Products') ?></span>
+            </label>
+            <div class="admin__field-control">
+                <input placeholder="<?= __('E.g. 10,20,30 or 10') ?>" type="text" class="admin__control-text" id="add-related-products" />
+                <label class="massaction-form-error" id="add-related-products-error"></label>
+            </div>
+        </div>
+        <div class="admin__field">
+            <label class="admin__field-label">
+                <span><?= __('Remove Related Products') ?></span>
+            </label>
+            <div class="admin__field-control">
+                <input placeholder="<?= __('E.g. 10,20,30 or 10') ?>" type="text" class="admin__control-text" id="remove-related-products" />
+                <label class="massaction-form-error" id="remove-related-products-error"></label>
+            </div>
+        </div>
+        <input type="hidden" id="massaction-related-products-submit-url" value="<?= $block->getUrl('extendproductlisting/product/assignretatedproduct', ["_secure" => $this->getRequest()->isSecure()]) ?>"/>
+        <button type="submit" class="massaction-submit-btn action-primary" id="massaction-related-products-btn" name="related-products-btn"><?= __('Submit') ?></button>
+    </fieldset>
+</div>
