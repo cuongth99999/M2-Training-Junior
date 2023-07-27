@@ -1,0 +1,53 @@
+<?php
+/**
+ * @var $block \Magenest\HandlePageRedirection\Block\Sale\SaleBox
+ */
+$jsonDataProduct = $block->getProductSaleOffJsonData();
+$listProduct = json_decode($jsonDataProduct, true);
+?>
+<button id="sale-button" style="float: right; margin: 0 20px">SALE</button>
+
+<div id="modal-sale_products" style="display: none; background-color: #aeff7a;">
+    <div>
+        <!-- Grid sản phẩm -->
+        <div class="grid-container">
+            <?php
+                if (!empty($listProduct)):
+                    foreach ($listProduct as $product):
+            ?>
+                <div class="sale-product">
+                    <a href="<?= $product['url']; ?>" class="product-link">
+                        <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
+                        <div class="product-name"><?= $product['name']; ?></div>
+                    </a>
+                </div>
+            <?php endforeach; endif; ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['Magenest_HandlePageRedirection/js/buttonSaleClick'], function (){})  ;
+</script>
+
+<style>
+    /* CSS cho grid sản phẩm */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+
+    .sale-product {
+        text-align: center;
+    }
+
+    .sale-product img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-name {
+        margin-top: 10px;
+    }
+</style>
