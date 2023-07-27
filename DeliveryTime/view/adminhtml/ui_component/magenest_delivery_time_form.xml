@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_delivery_time_form.magenest_delivery_time_form_data_source</item>
+            <item name="deps" xsi:type="string">magenest_delivery_time_form.magenest_delivery_time_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">From</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">magenest_delivery_time_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Magenest\DeliveryTime\Block\Adminhtml\DeliveryTime\Edit\Button\SaveButton"/>
+            <button name="save_and_continue" class="Magenest\DeliveryTime\Block\Adminhtml\DeliveryTime\Edit\Button\SaveAndContinueButton"/>
+            <button name="delete" class="Magenest\DeliveryTime\Block\Adminhtml\DeliveryTime\Edit\Button\DeleteButton"/>
+            <button name="back" class="Magenest\DeliveryTime\Block\Adminhtml\DeliveryTime\Edit\Button\BackButton"/>
+        </buttons>
+        <namespace>magenest_delivery_time_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>magenest_delivery_time_form.magenest_delivery_time_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="magenest_delivery_time_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="deliverytime/index/save"/>
+        </settings>
+        <dataProvider class="Magenest\DeliveryTime\Model\Block\DataProvider" name="magenest_delivery_time_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>delivery_time_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">Shiptime Information</label>
+        </settings>
+        <field name="delivery_time_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">magenest_delivery_time</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>delivery_time_id</dataScope>
+            </settings>
+        </field>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">magenest_delivery_time</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <visible>true</visible>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="store_view">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Store\Model\System\Store</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">magenest_delivery_time</item>
+                    <item name="dataScope" xsi:type="string">store_view</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="array">
+                        <item name="validate" xsi:type="boolean">true</item>
+                        <item name="message" xsi:type="string">An item needs to be selected. Select and try again.</item>
+                    </rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="customer_group" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">magenest_delivery_time</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Customer Groups</label>
+                <dataScope>customer_group</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magenest\DeliveryTime\Model\Block\CustomerGroupsOptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <container name="range_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Range TIme</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
+                    <item name="template" xsi:type="string">ui/dynamic-rows/templates/default</item>
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="addButtonLabel" xsi:type="string">Add Row</item>
+                    <item name="deleteProperty" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Dynamic Rows</item>
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record
+                        </item>
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+                <field name="from" formElement="select" component="Magenest_DeliveryTime/js/form/element/select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">magenest_delivery_time</item>
+                            <item name="default" xsi:type="number">0</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                            <rule name="custom-rule" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>text</dataType>
+                        <label translate="true">From</label>
+                        <dataScope>from</dataScope>
+                        <imports>
+                            <link name="sourceCode">${$.provider}:${ $.parentScope }.sourceCode</link>
+                            <link name="qtyAvailable">${$.parentName}.qtyAvailable:value</link>
+                            <link name="toggleDisable">ns = ${ $.ns }, index = sourceCode:value</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magenest\DeliveryTime\Model\Config\Source\DeliveryTime"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="to" formElement="select" component="Magenest_DeliveryTime/js/form/element/select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">magenest_delivery_time</item>
+                            <item name="default" xsi:type="number">0</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                            <rule name="custom-rule" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>text</dataType>
+                        <label translate="true">To</label>
+                        <dataScope>to</dataScope>
+                        <imports>
+                            <link name="sourceCode">${$.provider}:${ $.parentScope }.sourceCode</link>
+                            <link name="qtyAvailable">${$.parentName}.qtyAvailable:value</link>
+                            <link name="toggleDisable">ns = ${ $.ns }, index = sourceCode:value</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magenest\DeliveryTime\Model\Config\Source\DeliveryTime"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+    </fieldset>
+</form>
