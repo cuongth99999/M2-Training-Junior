@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_delivery_time" resource="default" engine="innodb" comment="Delivery Time Table">
+        <column xsi:type="int" name="delivery_time_id" unsigned="true" nullable="false" identity="true"
+                comment="Delivery Time  ID"/>
+        <column xsi:type="text" name="name" nullable="false"
+                comment="Delivery Time  Name"/>
+        <column xsi:type="int" name="group_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Customer Group ID"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Store ID"/>
+        <column xsi:type="json" name="range_time" nullable="true" comment="Range Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="delivery_time_id"/>
+        </constraint>
+<!--        <constraint xsi:type="foreign" referenceId="DELIVERY_TIME_STORE_ID_STORE_STORE_ID" table="magenest_delivery_time"-->
+<!--                    column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>-->
+<!--        <constraint xsi:type="foreign" referenceId="DELIVERY_TIME_CUSTOMER_GROUP_ID_CUSTOMER_GROUP_CUSTOMER_GROUP_ID" table="magenest_delivery_time"-->
+<!--                    column="group_id" referenceTable="customer_group" referenceColumn="customer_group_id" onDelete="CASCADE"/>-->
+    </table>
+    <table name="quote_address" resource="default" comment="Sales Flat Quote Address">
+        <column xsi:type="varchar" name="delivery_date" length="1024" nullable="true" comment="delivery_date" />
+        <column xsi:type="varchar" name="delivery_time_interval" length="1024" nullable="true" comment="delivery_time_interval" />
+        <column xsi:type="varchar" name="delivery_comment" length="1024" nullable="true" comment="delivery_comment" />
+    </table>
+    <table name="sales_order_address" resource="default" comment="Sales Flat Quote Address">
+        <column xsi:type="varchar" name="delivery_date" length="1024" nullable="true" comment="delivery_date" />
+        <column xsi:type="varchar" name="delivery_time_interval" length="1024" nullable="true" comment="delivery_time_interval" />
+        <column xsi:type="varchar" name="delivery_comment" length="1024" nullable="true" comment="delivery_comment" />
+        <column xsi:type="boolean" name="need_send_delivery_email" nullable="false" default="0" comment="need_send_delivery_email"/>
+    </table>
+</schema>
