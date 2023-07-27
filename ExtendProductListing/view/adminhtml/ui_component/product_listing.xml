@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="  urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction" class="Magenest\ExtendProductListing\Component\MassAction">
+            <action name="magenest_update_related_products">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">magenest_update_related_products</item>
+                        <item name="label" xsi:type="string" translate="true">Update Related Products</item>
+                        <item name="callback" xsi:type="array">
+                            <item name="provider" xsi:type="string">product_listing.product_listing.listing_top.listing_massaction</item>
+                            <item name="target" xsi:type="string">updateRelatedProducts</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="product_columns">
+        <column name="preview_frontend" class="Magenest\ExtendProductListing\Ui\Component\Listing\Column\ProductGrid">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">View On Store</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>
