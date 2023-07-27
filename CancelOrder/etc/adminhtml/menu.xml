@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_CancelOrder::cancel_orders" title="Magenest Cancel Orders" module="Magenest_CancelOrder" sortOrder="50" resource="Magenest_CancelOrder::cancel_orders" parent="Magento_Sales::sales"/>
+        <add id="Magenest_CancelOrder::cancelorder_grid" title="Cancel Order Grid" module="Magenest_CancelOrder" sortOrder="10" action="cancel/order/index" resource="Magenest_CancelOrder::cancelorder_grid" parent="Magenest_CancelOrder::cancel_orders"/>
+    </menu>
+</config>

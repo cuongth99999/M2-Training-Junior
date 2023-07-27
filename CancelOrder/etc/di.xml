@@ -1,0 +1,23 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="cancel_order_listing_data_source" xsi:type="string">Magenest\CancelOrder\Model\ResourceModel\CancelOrder\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\CancelOrder\Model\ResourceModel\CancelOrder\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_cancel_order</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\CancelOrder\Model\ResourceModel\CancelOrder</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Magenest\CancelOrder\Api\OrderHistoryInterface" type="Magenest\CancelOrder\Model\Api\OrderHistory"/>
+    <preference for="Magenest\CancelOrder\Api\OrderDetailInterface" type="Magenest\CancelOrder\Model\Api\OrderDetail"/>
+    <preference for="Magenest\CancelOrder\Api\CancelOrderInterface" type="Magenest\CancelOrder\Model\Api\CancelOrder"/>
+
+    <type name="Magento\User\Block\User\Edit\Tab\Main">
+        <plugin name="add_website_role_field" type="Magenest\CancelOrder\Plugin\UserEditTabMain" sortOrder="10" />
+    </type>
+</config>

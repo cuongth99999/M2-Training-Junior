@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/order/history/:customerId" method="GET">
+        <service class="Magenest\CancelOrder\Api\OrderHistoryInterface" method="getOrderHistoryByCustomerId" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/order/view/:orderId" method="GET">
+        <service class="Magenest\CancelOrder\Api\OrderDetailInterface" method="getOrderDetail"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/order/cancel/:orderId" method="POST">
+        <service class="Magenest\CancelOrder\Api\CancelOrderInterface" method="cancelOrder" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+</routes>
