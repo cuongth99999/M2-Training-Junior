@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <shipme>
+                <model>Magenest\Shipme\Model\Carrier\Shipme</model>
+                <active>1</active>
+                <name>Shipme Shipping</name>
+                <title>Shipme Shipping</title>
+                <express_enabled>1</express_enabled>
+                <express_title>Express delivery</express_title>
+                <express_price>4</express_price>
+                <business_enabled>1</business_enabled>
+                <business_title>Business delivery</business_title>
+                <business_price>5</business_price>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </shipme>
+        </carriers>
+    </default>
+</config>
